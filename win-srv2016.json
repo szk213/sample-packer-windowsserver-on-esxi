@@ -1,0 +1,46 @@
+{
+  "builders": [
+    {
+      "name": "WindowsServer2016A",
+      "type": "vmware-iso",
+      "vm_name": "WindowsServer2016A",
+      "guest_os_type": "windows8srv-64",
+      "communicator": "winrm",
+      "winrm_use_ssl": true,
+      "winrm_username": "{{user `vm_user_name`}}",
+      "winrm_password": "{{user `vm_user_password`}}",
+      "winrm_timeout": "30m",
+      "boot_wait": "5s",
+      "iso_url": "{{user `iso_url`}}",
+      "iso_checksum": "{{user `iso_checksum`}}",
+      "iso_checksum_type": "{{user `iso_checksum_type`}}",
+      "floppy_files": [
+        "floppy/Autounattend.xml"
+      ],
+      "tools_upload_flavor": "windows",
+      "headless": false,
+      "skip_export": true,
+      "keep_registered": true,
+      "remote_type": "esx5",
+      "remote_host": "{{user `esxi_host`}}",
+      "remote_datastore": "{{user `esxi_datastore`}}",
+      "remote_username": "{{user `esxi_username`}}",
+      "remote_password": "{{user `esxi_password`}}",
+      "remote_cache_directory": "packer_cache",
+      "disk_size": "{{user `vm_disk_size`}}",
+      "disk_type_id": "thin",
+      "vmx_data": {
+        "virtualHW.version": "10",
+        "scsi0.virtualDev": "lsisas1068",
+        "memsize": "{{user `vm_memory_size`}}",
+        "numvcpus": "{{user `vm_cpu_size`}}",
+        "ethernet0.networkName": "VM Network",
+        "ethernet0.present": "true",
+        "ethernet0.startConnected": "true",
+        "ethernet0.addressType": "static",
+        "ethernet0.Address": "{{user `vm_mac_address`}}",
+        "ethernet0.virtualDev": "vmxnet3"
+      }
+    }
+  ]
+}

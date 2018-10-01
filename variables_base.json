@@ -1,0 +1,15 @@
+{
+  "iso_url": "",
+  "iso_checksum": "",
+  "iso_checksum_type": "none",
+  "esxi_host": "",
+  "esxi_datastore": "",
+  "esxi_username": "",
+  "esxi_password": "",
+  "vm_cpu_size": "",
+  "vm_memory_size": "",
+  "vm_disk_size": "",
+  "vm_mac_address":"00:50:56:XX:XX:XX",
+  "vm_user_name": "root",
+  "vm_user_password": "Passw0rd"
+}
